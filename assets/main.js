@@ -35,7 +35,7 @@ if (carousel) {
     button.type = "button";
     const title = slide.dataset.selectorTitle || slide.querySelector("h3").textContent;
     button.textContent = title;
-    button.setAttribute("aria-label", `Ver oferta: ${title}`);
+    button.setAttribute("aria-label", `Ver soluci\u00f3n: ${title}`);
     button.setAttribute("aria-controls", slide.id);
     button.addEventListener("click", () => show(index));
     indicators.append(button);
