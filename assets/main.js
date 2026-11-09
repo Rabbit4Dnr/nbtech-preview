@@ -22,6 +22,17 @@ document.addEventListener("keydown", (event) => {
 mobile.addEventListener("change", adaptMenu);
 adaptMenu();
 
+const faviconLink = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+if (faviconLink) {
+  const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const updateFavicon = () => {
+    const variant = colorScheme.matches ? "dark" : "light";
+    faviconLink.href = new URL(`assets/favicon-nbtech-${variant}.svg`, document.baseURI).href;
+  };
+  updateFavicon();
+  colorScheme.addEventListener("change", updateFavicon);
+}
+
 // Progressive enhancement: every offer remains readable when JavaScript is unavailable.
 const carousel = document.querySelector(".offers-carousel");
 if (carousel) {
