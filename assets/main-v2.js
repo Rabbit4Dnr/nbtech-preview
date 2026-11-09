@@ -46,12 +46,12 @@ if (carousel) {
     button.type = "button";
     const title = slide.dataset.selectorTitle || slide.querySelector("h3").textContent;
     button.textContent = title;
-    button.setAttribute("aria-label", `Ver soluci\u00f3n: ${title}`);
+    button.setAttribute("aria-label", `${document.documentElement.lang === "en" ? "View solution" : "Ver solución"}: ${title}`);
     button.setAttribute("aria-controls", slide.id);
     button.addEventListener("click", () => show(index));
     indicators.append(button);
     slide.setAttribute("role", "group");
-    slide.setAttribute("aria-roledescription", "diapositiva");
+    slide.setAttribute("aria-roledescription", document.documentElement.lang === "en" ? "slide" : "diapositiva");
     return button;
   });
   function show(index) {
@@ -91,7 +91,20 @@ if (carousel) {
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) show(current + (dx < 0 ? 1 : -1));
   }, { passive: true });
   carousel.dataset.enhanced = "true";
-  carousel.setAttribute("aria-roledescription", "carrusel");
+  carousel.setAttribute("aria-roledescription", document.documentElement.lang === "en" ? "carousel" : "carrusel");
   controls.hidden = false;
+  function translateCarousel() {
+    const english = document.documentElement.lang === "en";
+    slides.forEach((slide, i) => {
+      const title = i === 3 ? (english ? "AI" : "IA") : slide.dataset.selectorTitle;
+      buttons[i].textContent = title;
+      buttons[i].setAttribute("aria-label", `${english ? "View solution" : "Ver solución"}: ${title}`);
+      slide.setAttribute("aria-roledescription", english ? "slide" : "diapositiva");
+    });
+    carousel.setAttribute("aria-roledescription", english ? "carousel" : "carrusel");
+    position.textContent = buttons[current].textContent;
+  }
+  document.addEventListener("languagechange", translateCarousel);
+  translateCarousel();
   show(0);
 }

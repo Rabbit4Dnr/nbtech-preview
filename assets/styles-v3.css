@@ -188,3 +188,6 @@ h2{font-size:34px}.offer-line-heading{display:block}.offer-line-heading h3{margi
 
 @media(max-width:760px){.brand-logo{width:76px;margin-right:-8px}.brand-tech{font-size:20px}.brand-copy{min-width:0}.brand small{white-space:nowrap;font-size:8px}}
 @media(max-width:380px){.brand-logo{width:68px;margin-right:-7px}.brand-lockup{min-height:44px}.brand-tech{font-size:18px}.brand small{font-size:7px}}
+
+.language-switch{display:flex;gap:3px;margin-left:auto;flex-shrink:0}.language-switch[hidden]{display:none}.language-switch button{background:transparent;color:var(--ink);border:1px solid var(--line);padding:9px 7px;cursor:pointer;font:inherit;font-size:12px}.language-switch button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}.language-switch button:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+@media(max-width:760px){.header-inner{column-gap:8px}.brand{max-width:100%}.language-switch{margin-left:auto}.menu-toggle:not([hidden]){gap:6px;padding:9px 6px}.brand small{max-width:172px;font-size:7px}.brand-lockup{min-height:48px}.language-switch button{padding:9px 5px}}
